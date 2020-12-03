@@ -24,9 +24,15 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -88,6 +94,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -119,6 +126,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "My-Blog-Site-UI"
+    }
+  },
+  "defaultProject": "My-Blog-Site-UI",
+  "cli": {
+    "analytics": "1890ca28-f86c-4b19-b4bc-d1a988ac53b6"
+  }
 }
