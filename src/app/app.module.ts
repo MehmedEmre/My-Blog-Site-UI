@@ -1,4 +1,6 @@
-import { MainLayoutModule } from './pages/pages.module';
+import { PagesModule } from './pages/pages.module';
+
+
 import { AdminNavBarComponent } from './nav-bar/admin-nav-bar/admin-nav-bar.component';
 import { AdminLayoutComponent } from './layout/admin-layout/admin-layout.component';
 
@@ -9,6 +11,7 @@ import{HttpClientModule} from "@angular/common/http"
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 
@@ -24,7 +27,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MainLayoutModule
+    PagesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,6 +12,7 @@ const routes: Routes = [
   {path:"",component:MainLayoutComponent,children:[
 
     {path:"",component:HomeComponent},
+    {path:"pages/:page",component:HomeComponent},
     {path:"about",component:AboutMeComponent},
     {path:"contact",component:ContactComponent},
     {path:"*",redirectTo:"home",pathMatch:"full"}

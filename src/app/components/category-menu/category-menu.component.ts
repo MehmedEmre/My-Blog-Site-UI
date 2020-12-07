@@ -1,5 +1,5 @@
-import { Category } from './../../models/category';
-import { CategoryService } from '../../services/category.service';
+import { Category } from '../../models/CategoryModel/category';
+import { CategoryService } from '../../services/CategoryService/category.service';
 import { Component, OnInit } from '@angular/core';
 import { JsonPipe } from '@angular/common';
 
