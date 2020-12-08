@@ -5,12 +5,12 @@ export class Article {
 
   id:number;
   title:string;
-  article_summary:string;
-  article_content:string;
-  publish_date:Date;
+  article_Summary:string;
+  article_Content:string;
+  publish_Date:Date;
   picture:string;
-  view_count:number;
-  comment_count:number
+  view_Count:number;
+  comment_Count:number
   category:Category;
 
 }

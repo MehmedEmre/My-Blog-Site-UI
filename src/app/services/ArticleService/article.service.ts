@@ -13,6 +13,7 @@ export class ArticleService {
   private apiUrl:string = "https://localhost:44374/api/Article";
   public loading:boolean = true;
 
+
   constructor(private http:HttpClient) { }
 
 
@@ -29,7 +30,6 @@ export class ArticleService {
     return this.http.get<ArticleResponse>(url).pipe(tap(x => {
 
       this.loading = false; //veri sunucudan geldiğinde loading'i false yap
-
     }));
   }
 

@@ -12,9 +12,9 @@ export class HomeComponent implements OnInit {
 
   page:number = 1;
   pageSize:number = 5;
-  articles:Article[];
-  totalCount:number;
-
+  articles:Article[] = [];
+  totalCount:number = 0;
+  loadingItem:number = 5;
 
   constructor(private articleService:ArticleService,
     private activatedRoute:ActivatedRoute) { }
@@ -28,14 +28,30 @@ export class HomeComponent implements OnInit {
           this.page = Number(par.get("page"));
         }
 
+        if(this.totalCount > 0){
+
+          console.log(this.totalCount)
+          if(this.totalCount>=this.page*this.pageSize){
+
+            this.loadingItem = 5;
+          }else{
+            this.loadingItem  = this.pageSize - (this.page *this.pageSize - this.totalCount);
+            console.log(this.loadingItem )
+          }
+
+        }
+
+        this.articleService.getArticle(this.page,this.pageSize).subscribe(data=>{
+
+          this.articles = data.response;
+          this.totalCount = data.totalCount;
+        });
+
       })
 
-      this.articleService.getArticle(this.page,this.pageSize).subscribe(data=>{
+      
 
-        this.articles = data.response;
-        this.totalCount = data.totalCount;
 
-      });
 
 
   }

@@ -1,1 +1,120 @@
-<p>articles works!</p>
+
+<div *ngIf = "this.articleService.loading">
+
+  <main *ngFor="let item of createArray()" class="page mb-3">
+
+    <div class="page-content">
+
+        <div class="placeholder-content">
+            <div class="placeholder-content_item"></div>
+            <div class="placeholder-content_item"></div>
+            <div class="placeholder-content_item"></div>
+            <div class="placeholder-content_item"></div>
+            <div class="placeholder-content_item"></div>
+            <div class="placeholder-content_item"></div>
+            <div class="placeholder-content_item"></div>
+            <div class="placeholder-content_item"></div>
+            <div class="placeholder-content_item"></div>
+            <div class="placeholder-content_item"></div>
+            <div class="placeholder-content_item"></div>
+        </div>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<div *ngIf = "articles.length > 0 && !this.articleService.loading; else emptyTemplate">
+
+  <div *ngFor = "let article of articles | paginate:{itemsPerPage:pageSize,currentPage:page,totalItems:totalCount}" class="mb-3">
+    <ng-container *ngTemplateOutlet = "horizontalTemplate;
+                                       context:{
+                                       id:article.id,
+                                       comment_count:article.comment_Count,
+                                       view_count:article.view_Count,
+                                       categoryName:article.category.name,
+                                       publish_date:article.publish_Date,
+                                       article_summary:article.article_Summary,
+                                       title:article.title,
+                                       picture:article.picture}">
+    </ng-container>
+
+
+  </div>
+
+</div>
+
+
+<ng-template #emptyTemplate>
+
+  <div *ngIf="!this.articleService.loading" class="alert alert-secondary" role="alert">
+    Makale Bulunamadı!
+  </div>
+
+</ng-template>
+
+
+<ng-template let-id = "id"
+             let-cCount ="comment_count"
+             let-vCount ="view_count"
+             let-cName="categoryName"
+             let-pDate = "publish_date"
+             let-summary ="article_summary"
+             let-header = "title"
+             let-photo = "picture" #horizontalTemplate>
+
+
+<div class="card bg-light border-dark">
+
+  <div class="card-body">
+
+    <div class="row">
+
+      <div class="col-sm-4">
+        <img [src] = "articlePicture" class="card-img" /><!--let kısmı kaldırıldı-->
+      </div>
+
+      <div class="col-sm-8">
+
+        <h5 class="card-title">{{header}}</h5>
+
+        <p class="card-text">{{summary}}</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="card-footer bg-transparent border-dark">
+
+    <span class="badge bg-secondary white mr-1">
+      <i class="fas fa-calendar-week"></i>&nbsp;&nbsp;{{pDate | date:'dd.MM.yyyy'}}
+    </span>
+
+    <span class="badge bg-secondary mr-1 white">
+      <i class="fa fa-folder"></i>&nbsp;&nbsp;{{cName}}
+    </span>
+
+    <span class="badge bg-secondary white mr-1">
+      <i class="fa fa-eye"></i>&nbsp;&nbsp;{{vCount}}
+    </span>
+
+
+    <span class="badge bg-secondary white mr-1">
+      <i class="fa fa-comment"></i>&nbsp;&nbsp;{{cCount}}
+    </span>
+
+    <a class="btn btn-secondary btn-sm float-right" [routerLink] = "['/article',id]" >Devamını Oku</a>
+
+
+  </div>
+
+</div>
+</ng-template>
+
+<pagination-controls *ngIf = "totalCount > pageSize && !this.articleService.loading" responsive="true"
+                     (pageChange) ="pageChanged($event)"
+                      previousLabel="geri" nextLabel="ileri"></pagination-controls><!--event -> 1 ,2 ,3 gibi değerlerdir-->

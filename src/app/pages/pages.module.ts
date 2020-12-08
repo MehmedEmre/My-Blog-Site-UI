@@ -15,7 +15,7 @@ import { RouterModule } from '@angular/router';
   declarations: [MainLayoutComponent,MainNavBarComponent,AboutMeComponent,ContactComponent,HomeComponent],
   imports: [
     CommonModule,
-    ComponentsModule,//category-menu ve page-title component import edildi
+    ComponentsModule,//category-menu , page-title ve article component import edildi
     RouterModule,
   ]
 })
