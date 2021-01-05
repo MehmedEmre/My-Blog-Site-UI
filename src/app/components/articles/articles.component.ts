@@ -19,7 +19,7 @@ export class ArticlesComponent implements OnInit {
 
   articlePicture:string = "assets/article.png"
 
-  constructor(public articleService:ArticleService,private activetedRoute:ActivatedRoute,private router:Router) { }
+  constructor(public articleService:ArticleService,private router:Router) { }
 
   ngOnInit(): void {
   }

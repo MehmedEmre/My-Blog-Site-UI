@@ -1,3 +1,4 @@
+import { ArticleComponent } from './../../pages/article/article.component';
 import{HomeComponent} from '../../pages/home/home.component'
 import{ContactComponent} from '../../pages/contact/contact.component'
 import{AboutMeComponent} from '../../pages/about-me/about-me.component'
@@ -15,6 +16,7 @@ const routes: Routes = [
     {path:"pages/:page",component:HomeComponent},
     {path:"about",component:AboutMeComponent},
     {path:"contact",component:ContactComponent},
+    {path:"article/:id",component:ArticleComponent},
     {path:"*",redirectTo:"home",pathMatch:"full"}
 
   ]}

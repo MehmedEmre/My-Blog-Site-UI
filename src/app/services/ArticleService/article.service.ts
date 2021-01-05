@@ -17,14 +17,14 @@ export class ArticleService {
   constructor(private http:HttpClient) { }
 
 
-  public getArticle(page:number,pageSize:number):Observable<ArticleResponse>{
+  public getArticles(page:number,pageSize:number):Observable<ArticleResponse>{
 
     let url = `${this.apiUrl}/${page}/${pageSize}`;
 
 
     //pipe ile gelen veriler üzerinde bir dizi işlem yapabiliriz.
     //x.response yaparak veri üzerinde ek işlemler yapılabilir.
-    //getArticle metoduna subscribe olduğumuzda x.respons'a ve x.totalCount
+    //getArticle metoduna subscribe olduğumuzda x.respons ve x.totalCount
     //gibi datalar dolar. Yani verimiz kaynakdan geldi demektir.
 
     return this.http.get<ArticleResponse>(url).pipe(tap(x => {
@@ -32,6 +32,19 @@ export class ArticleService {
       this.loading = false; //veri sunucudan geldiğinde loading'i false yap
     }));
   }
+
+
+  public getArticle(id:number):Observable<Article>{
+
+    let url = `${this.apiUrl}/${id}`
+
+    return this.http.get<Article>(url).pipe(tap(x=>{
+
+      this.loading = false;
+
+    }));
+  }
+
 
 
 }

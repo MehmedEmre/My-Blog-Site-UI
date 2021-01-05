@@ -29,7 +29,7 @@
 <div *ngIf = "articles.length > 0 && !this.articleService.loading; else emptyTemplate">
 
   <div *ngFor = "let article of articles | paginate:{itemsPerPage:pageSize,currentPage:page,totalItems:totalCount}" class="mb-3">
-    <ng-container *ngTemplateOutlet = "horizontalTemplate;
+    <ng-container *ngTemplateOutlet = "myTemplate;
                                        context:{
                                        id:article.id,
                                        comment_count:article.comment_Count,
@@ -41,13 +41,12 @@
                                        picture:article.picture}">
     </ng-container>
 
-
   </div>
 
 </div>
 
 
-<ng-template #emptyTemplate>
+<ng-template #emptyTemplate> <!--Tek başına ekrana basılmaz  ve dom'da görülmez container tarafından çağrılır veya bir koşul ile tetiklenir -->
 
   <div *ngIf="!this.articleService.loading" class="alert alert-secondary" role="alert">
     Makale Bulunamadı!
@@ -55,7 +54,7 @@
 
 </ng-template>
 
-
+<!--Tek başına ekrana basılmaz  ve dom'da görülmez container tarafından çağrılır veya bir koşul ile tetiklenir -->
 <ng-template let-id = "id"
              let-cCount ="comment_count"
              let-vCount ="view_count"
@@ -63,7 +62,7 @@
              let-pDate = "publish_date"
              let-summary ="article_summary"
              let-header = "title"
-             let-photo = "picture" #horizontalTemplate>
+             let-photo = "picture" #myTemplate>
 
 
 <div class="card bg-light border-dark">
@@ -73,12 +72,12 @@
     <div class="row">
 
       <div class="col-sm-4">
-        <img [src] = "articlePicture" class="card-img" /><!--let kısmı kaldırıldı-->
+        <img [src] = "articlePicture" class="card-img" />
       </div>
 
       <div class="col-sm-8">
 
-        <h5 class="card-title">{{header}}</h5>
+        <h5 class="card-title">{{header}}</h5><!--let kısmı kaldırıldı-->
 
         <p class="card-text">{{summary}}</p>
 

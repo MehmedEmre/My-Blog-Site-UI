@@ -41,18 +41,14 @@ export class HomeComponent implements OnInit {
 
         }
 
-        this.articleService.getArticle(this.page,this.pageSize).subscribe(data=>{
+        this.articleService.getArticles(this.page,this.pageSize).subscribe(data=>{
 
           this.articles = data.response;
           this.totalCount = data.totalCount;
+
         });
 
       })
-
-      
-
-
-
 
   }
 

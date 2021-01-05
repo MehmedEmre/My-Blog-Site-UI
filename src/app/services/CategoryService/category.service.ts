@@ -15,7 +15,7 @@ export class CategoryService {
 
   public getAllCategories(){ //getAllCategories():Observable<Category[]>
 
-    //api tarafında list olarak tanımlıdır. Fakat typescript tarafında list yapısı yoktu.
+    //api tarafında list olarak tanımlıdır. Fakat typescript tarafında list yapısı yoktur.
     //Onun yerine [] kullanılır.
     return this.http.get<Category[]>(this.apiUrl);
 
