@@ -10,13 +10,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ArticleComponent } from './article/article.component';
+import { CategoryArticlesComponent } from './category-articles/category-articles.component';
 
 
 @NgModule({
-  declarations: [MainLayoutComponent,MainNavBarComponent,AboutMeComponent,ContactComponent,HomeComponent, ArticleComponent],//Declarationa yazılı tüm componentler birbirini tanır.
+  declarations: [MainLayoutComponent,MainNavBarComponent,AboutMeComponent,ContactComponent,HomeComponent, ArticleComponent,CategoryArticlesComponent],//Declarationa yazılı tüm componentler birbirini tanır.
   imports: [
     CommonModule,
-    ComponentsModule,//category-menu , page-title ve article component import edildi
+    ComponentsModule,//category-menu , page-title ve articles component import edildi
     RouterModule,
   ]
 })

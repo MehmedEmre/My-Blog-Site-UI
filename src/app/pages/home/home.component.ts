@@ -23,20 +23,18 @@ export class HomeComponent implements OnInit {
 
       this.activatedRoute.paramMap.subscribe(par =>{//url'i dinler.
 
+
         //url'de bir page değeri varsa
         if(par.get("page")){
           this.page = Number(par.get("page"));
         }
 
         if(this.totalCount > 0){
-
-          console.log(this.totalCount)
           if(this.totalCount>=this.page*this.pageSize){
 
             this.loadingItem = 5;
           }else{
             this.loadingItem  = this.pageSize - (this.page *this.pageSize - this.totalCount);
-            console.log(this.loadingItem )
           }
 
         }

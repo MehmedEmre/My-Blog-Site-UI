@@ -1,5 +1,5 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Pipe } from '@angular/core';
 import { Article } from 'src/app/models/ArticleModel/article';
 import { ArticleService } from 'src/app/services/ArticleService/article.service';
 
@@ -16,12 +16,14 @@ export class ArticlesComponent implements OnInit {
   @Input() page:number;
   @Input() pageSize:number;
   @Input() loadingItem:number;
+  @Input() type:string;
 
   articlePicture:string = "assets/article.png"
 
-  constructor(public articleService:ArticleService,private router:Router) { }
+  constructor(public articleService:ArticleService,private router:Router,private aroute:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.articleService.loading = true;
   }
 
   createArray(value):number[]{
@@ -42,7 +44,20 @@ export class ArticlesComponent implements OnInit {
 
     this.page = event;//1 2 3 butonlarından gelen değeri al
 
-    this.router.navigateByUrl(`/pages/${this.page}`)
+    if(this.type == "home"){
+      this.router.navigateByUrl(`/pages/${this.page}`)
+    }
+    else if(this.type == "categoryArticle"){
+
+      let categoryId = this.aroute.snapshot.paramMap.get("categoryId");
+      let name = this.aroute.snapshot.paramMap.get("name");
+
+      this.router.navigateByUrl(`category/${name}/${categoryId}/pages/${this.page}`)
+
+
+    }
+
+
 
 
   }

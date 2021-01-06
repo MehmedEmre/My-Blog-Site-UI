@@ -12,9 +12,8 @@
 
     <h3  *ngFor = "let category of categories">
       <strong>
-
         <!--/category/asp.net/2 gibi-->
-        <a class="btn btn-link" [routerLink] = "['/category',category.id,category.id]" >
+        <a class="btn btn-link" [routerLink] = "['/category',category.name | urlFormat,category.id,'pages','1']" >
          <i class="fa fa-arrow-circle-right"></i>&nbsp;{{category.name}}
         </a>
 

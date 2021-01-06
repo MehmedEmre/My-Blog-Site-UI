@@ -46,5 +46,16 @@ export class ArticleService {
   }
 
 
+  public getArticleWithCategory(categoryId:number,page:number,pageSize:number):Observable<ArticleResponse>{
+
+    let url = `${this.apiUrl}/GetArticleWithCategory/${categoryId}/${page}/${pageSize}`
+
+    return this.http.get<ArticleResponse>(url).pipe(tap(x=>{
+
+      this.loading = false;
+
+    })) ;
+  }
+
 
 }

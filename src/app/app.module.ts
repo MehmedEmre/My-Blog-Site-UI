@@ -19,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     AdminLayoutComponent,
     AdminNavBarComponent
+
   ],
   imports: [
     BrowserModule,
